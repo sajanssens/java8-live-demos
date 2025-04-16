@@ -1,7 +1,9 @@
 package com.infosupport;
 
 import java.util.List;
+import java.util.TreeMap;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class FirstTaste {
@@ -51,14 +53,14 @@ public class FirstTaste {
                 .mapToInt(Person::getAge)
                 .boxed();
 
-        List<Person> koens = source.stream()
+        source.stream()
                 .mapToInt(Integer::intValue)
                 .mapToObj(a -> new Person("Koen", a))
-                .toList();
+                .collect(Collectors.partitioningBy(p -> p.getName().equals("Koen") || p.getName().equals("Bram")));
 
         Stream.generate(() -> 1)
                 .limit(5)
-                .forEach(System.out::println);
+                ;
 
         // Stream.iterate(0, i -> i < 100, i -> i + 1)
         //         .;
