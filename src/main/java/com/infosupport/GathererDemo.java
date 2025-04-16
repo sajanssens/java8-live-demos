@@ -10,7 +10,7 @@ public class GathererDemo {
         Stream.generate(() -> (int) (Math.random() * 100))
                 .limit(10)
                 .gather(gt(50))
-                .gather(Gatherers.windowSliding(2))
+                .gather(Gatherers.windowFixed(2))
                 .forEach(System.out::println);
     }
 
